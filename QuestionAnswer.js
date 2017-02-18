@@ -3,6 +3,8 @@ var answerText;
 var questionArray=[];
 var answerArray=[];
 var i=0;
+var j=10000;
+var childNodesCount;
 
 
 
@@ -22,6 +24,14 @@ function addProblem(){
 	var textNode = document.createTextNode("Question:");
     var questionDetail=document.createTextNode(questionArray[0]);
 
+    var deleteButton=document.createElement("button");
+    deleteButton.innerHTML="Delete";
+    deleteButton.id=i;
+    console.log(deleteButton.id);
+    var editButton=document.createElement("button");
+    editButton.innerHTML="Edit";
+    editButton.id=j;
+
 
     var answerLogo = document.createElement("p");
     var ansTextNode = document.createTextNode("Answer: ");
@@ -30,12 +40,15 @@ function addProblem(){
      if(i==0){
       myContainer.appendChild(myDiv);
       myDiv.appendChild(questionLogo);
-	  questionLogo.appendChild(textNode);
-	  questionLogo.appendChild(questionDetail);
-      questionLogo.appendChild(mybr);
+	    questionLogo.appendChild(textNode);
+	    questionLogo.appendChild(questionDetail);
       myDiv.appendChild(answerLogo);
-      questionLogo.appendChild(ansTextNode);
-      questionLogo.appendChild(answerDetail);
+      answerLogo.appendChild(ansTextNode);
+      answerLogo.appendChild(answerDetail);
+      answerLogo.appendChild(mybr);
+      myDiv.appendChild(deleteButton);
+      myDiv.innerHTML += ' ';
+      myDiv.appendChild(editButton);
       
     }
     else if(i>0){
@@ -43,16 +56,25 @@ function addProblem(){
       myDiv.appendChild(questionLogo);
       questionLogo.appendChild(textNode);
       questionLogo.appendChild(questionDetail);
-      questionLogo.appendChild(mybr);
       myDiv.appendChild(answerLogo);
-      questionLogo.appendChild(ansTextNode);
-      questionLogo.appendChild(answerDetail);
+      answerLogo.appendChild(ansTextNode);
+      answerLogo.appendChild(answerDetail);
+      answerLogo.appendChild(mybr);
+      myDiv.appendChild(deleteButton);
+      myDiv.innerHTML += ' ';
+      myDiv.appendChild(editButton);
           
     }
 
     i++;
-   
+    j++;
 
-		
-  
+    myDiv.childNodes[2].addEventListener("click", function(){
+           var deleteElement=document.getElementById(this.id);
+           console.log(deleteElement);
+           deleteElement.parentNode.parentNode.removeChild(deleteElement.parentNode);
+    });
+
+  childNodesCount=myContainer.childNodes.length;
+  console.log(childNodesCount);
 }
