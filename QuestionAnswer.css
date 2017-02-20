@@ -1,0 +1,21 @@
+#questionLogo{
+	display: inline;
+}
+
+#question{
+	display: inline;
+
+}
+
+#answerLogo{
+	display: inline;
+}
+
+#answer{
+	display: inline;
+}
+
+textarea{
+	text-align: left;
+}
+
